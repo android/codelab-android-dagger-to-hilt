@@ -20,8 +20,11 @@ import com.example.android.dagger.storage.FakeStorage
 import com.example.android.dagger.storage.Storage
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 
 // Overrides StorageModule in android tests
+@InstallIn(ApplicationComponent::class)
 @Module
 abstract class TestStorageModule {
 

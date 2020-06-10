@@ -16,9 +16,9 @@
 
 package com.example.android.dagger.registration
 
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.ViewModel
 import com.example.android.dagger.user.UserManager
-import dagger.hilt.android.scopes.ActivityScoped
-import javax.inject.Inject
 
 /**
  * RegistrationViewModel is the ViewModel that the Registration flow ([RegistrationActivity]
@@ -28,8 +28,7 @@ import javax.inject.Inject
  * that UserManager is a dependency.
  */
 
-@ActivityScoped
-class RegistrationViewModel @Inject constructor(val userManager: UserManager) {
+class RegistrationViewModel @ViewModelInject constructor(val userManager: UserManager) : ViewModel() {
 
     private var username: String? = null
     private var password: String? = null

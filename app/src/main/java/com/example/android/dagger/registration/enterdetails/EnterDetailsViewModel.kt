@@ -16,9 +16,10 @@
 
 package com.example.android.dagger.registration.enterdetails
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import javax.inject.Inject
+import androidx.lifecycle.ViewModel
 
 private const val MAX_LENGTH = 5
 
@@ -26,7 +27,7 @@ private const val MAX_LENGTH = 5
  * EnterDetailsViewModel is the ViewModel that [EnterDetailsFragment] uses to
  * obtain to validate user's input data.
  */
-class EnterDetailsViewModel @Inject constructor() {
+class EnterDetailsViewModel @ViewModelInject constructor() : ViewModel() {
 
     private val _enterDetailsState = MutableLiveData<EnterDetailsViewState>()
     val enterDetailsState: LiveData<EnterDetailsViewState>
