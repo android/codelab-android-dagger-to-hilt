@@ -22,8 +22,8 @@ import dagger.Subcomponent
 
 // Scope annotation that the UserComponent uses
 // Classes annotated with @LoggedUserScope will have a unique instance in this Component
-@LoggedUserScope
 // Definition of a Dagger subcomponent
+@LoggedUserScope
 @Subcomponent
 interface UserComponent {
 

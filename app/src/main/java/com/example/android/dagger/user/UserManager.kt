@@ -80,7 +80,7 @@ class UserManager @Inject constructor(
         storage.setString("$username$PASSWORD_SUFFIX", "")
         logout()
     }
-
+    
     private fun userJustLoggedIn() {
         // When the user logs in, we create a new instance of UserComponent
         userComponent = userComponentFactory.create()

@@ -64,10 +64,6 @@ dependencies {
 
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
 
-    // Dagger dependencies
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
