@@ -18,15 +18,21 @@ package com.example.android.dagger.settings
 
 import com.example.android.dagger.user.UserDataRepository
 import com.example.android.dagger.user.UserManager
-import javax.inject.Inject
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
 
 /**
  * SettingsViewModel is the ViewModel that [SettingsActivity] uses to handle complex logic.
  */
-class SettingsViewModel @Inject constructor(
-    private val userDataRepository: UserDataRepository,
+class SettingsViewModel @AssistedInject constructor(
+    @Assisted private val userDataRepository: UserDataRepository,
     private val userManager: UserManager
 ) {
+
+    @AssistedInject.Factory
+    interface Factory {
+        fun create(userDataRepository: UserDataRepository): SettingsViewModel
+    }
 
     fun refreshNotifications() {
         userDataRepository.refreshUnreadNotifications()

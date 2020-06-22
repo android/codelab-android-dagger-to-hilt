@@ -17,6 +17,7 @@
 package com.example.android.dagger.user
 
 import com.example.android.dagger.storage.Storage
+import dagger.hilt.internal.GeneratedComponentManager
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -35,7 +36,7 @@ class UserManager @Inject constructor(
     // Since UserManager will be in charge of managing the UserComponent lifecycle,
     // it needs to know how to create instances of it
     private val userComponentFactory: UserComponent.Factory
-) {
+): GeneratedComponentManager<UserComponent> {
 
     /**
      *  UserComponent is specific to a logged in user. Holds an instance of UserComponent.
@@ -84,5 +85,9 @@ class UserManager @Inject constructor(
     private fun userJustLoggedIn() {
         // When the user logs in, we create a new instance of UserComponent
         userComponent = userComponentFactory.create()
+    }
+
+    override fun generatedComponent(): UserComponent {
+        return userComponent!!
     }
 }

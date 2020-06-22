@@ -25,24 +25,30 @@ import com.example.android.dagger.R
 import com.example.android.dagger.login.LoginActivity
 import com.example.android.dagger.registration.RegistrationActivity
 import com.example.android.dagger.settings.SettingsActivity
+import com.example.android.dagger.user.UserComponent
+import com.example.android.dagger.user.UserDataRepository
 import com.example.android.dagger.user.UserManager
 import dagger.hilt.EntryPoint
+import dagger.hilt.EntryPoints
 import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @InstallIn(ApplicationComponent::class)
+    @InstallIn(UserComponent::class)
     @EntryPoint
-    interface UserManagerEntryPoint {
-        fun userManager(): UserManager
+    interface UserComponentEntryPoint {
+        fun userDataRepository(): UserDataRepository
     }
 
-    // @Inject annotated fields will be provided by Dagger
-    @Inject
-    lateinit var mainViewModel: MainViewModel
+    @Inject lateinit var userManager: UserManager
+    @Inject lateinit var viewModelFactory: MainViewModel.Factory
+
+    private lateinit var mainViewModel: MainViewModel
 
     /**
      * If the User is not registered, RegistrationActivity will be launched,
@@ -51,10 +57,6 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Grabs instance of UserManager from the application graph
-        val entryPoint = EntryPointAccessors.fromApplication(applicationContext, UserManagerEntryPoint::class.java)
-        val userManager = entryPoint.userManager()
 
         if (!userManager.isUserLoggedIn()) {
             if (!userManager.isUserRegistered()) {
@@ -67,9 +69,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             setContentView(R.layout.activity_main)
 
-            // If the MainActivity needs to be displayed, we get the UserComponent from the
-            // application graph and gets this Activity injected
-            userManager.userComponent!!.inject(this)
+            val entryPoint = EntryPoints.get(userManager, UserComponentEntryPoint::class.java)
+            mainViewModel = viewModelFactory.create(entryPoint.userDataRepository())
             setupViews()
         }
     }

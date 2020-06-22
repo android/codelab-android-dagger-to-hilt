@@ -17,7 +17,12 @@
 package com.example.android.dagger.main
 
 import com.example.android.dagger.user.UserDataRepository
-import javax.inject.Inject
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
+import com.squareup.inject.assisted.dagger2.AssistedModule
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 
 /**
  * MainViewModel is the ViewModel that [MainActivity] uses to
@@ -26,7 +31,14 @@ import javax.inject.Inject
  * @Inject tells Dagger how to provide instances of this type. Dagger also knows
  * that UserDataRepository is a dependency.
  */
-class MainViewModel @Inject constructor(private val userDataRepository: UserDataRepository) {
+class MainViewModel @AssistedInject constructor(
+    @Assisted private val userDataRepository: UserDataRepository
+) {
+
+    @AssistedInject.Factory
+    interface Factory {
+        fun create(userDataRepository: UserDataRepository): MainViewModel
+    }
 
     val welcomeText: String
         get() = "Hello ${userDataRepository.username}!"
@@ -34,3 +46,9 @@ class MainViewModel @Inject constructor(private val userDataRepository: UserData
     val notificationsText: String
         get() = "You have ${userDataRepository.unreadNotifications} unread notifications"
 }
+
+@InstallIn(ActivityComponent::class)
+@AssistedModule
+@Module(includes = [AssistedInject_AssistedInjectModule::class])
+// Needed until AssistedInject is incorporated into Dagger
+interface AssistedInjectModule {}

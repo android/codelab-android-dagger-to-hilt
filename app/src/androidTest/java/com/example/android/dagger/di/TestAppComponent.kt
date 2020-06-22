@@ -22,5 +22,5 @@ import javax.inject.Singleton
 // Replacement for AppComponent in android tests
 @Singleton
 // Includes TestStorageModule that overrides objects provided in StorageModule
-@Component(modules = [TestStorageModule::class, AppSubcomponents::class])
+@Component(modules = [TestStorageModule::class])
 interface TestAppComponent : AppComponent

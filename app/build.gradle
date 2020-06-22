@@ -18,6 +18,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.example.android.dagger.MyCustomTestRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
+            }
+        }
+
     }
     buildTypes {
         release {
@@ -67,6 +74,9 @@ dependencies {
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    implementation 'com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2'
+    kapt 'com.squareup.inject:assisted-inject-processor-dagger2:0.5.2'
 
     // Hilt ViewModel extension
     def hilt_jetpack_version = "1.0.0-alpha01"

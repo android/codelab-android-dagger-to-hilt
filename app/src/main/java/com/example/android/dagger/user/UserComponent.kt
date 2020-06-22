@@ -16,24 +16,19 @@
 
 package com.example.android.dagger.user
 
-import com.example.android.dagger.main.MainActivity
-import com.example.android.dagger.settings.SettingsActivity
-import dagger.Subcomponent
+import dagger.hilt.DefineComponent
+import dagger.hilt.android.components.ApplicationComponent
 
 // Scope annotation that the UserComponent uses
 // Classes annotated with @LoggedUserScope will have a unique instance in this Component
 // Definition of a Dagger subcomponent
 @LoggedUserScope
-@Subcomponent
+@DefineComponent(parent = ApplicationComponent::class)
 interface UserComponent {
 
     // Factory to create instances of UserComponent
-    @Subcomponent.Factory
+    @DefineComponent.Builder
     interface Factory {
         fun create(): UserComponent
     }
-
-    // Classes that can be injected by this Component
-    fun inject(activity: MainActivity)
-    fun inject(activity: SettingsActivity)
 }
