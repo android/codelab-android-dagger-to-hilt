@@ -63,7 +63,7 @@ class EnterDetailsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_enter_details, container, false)
 
-        enterDetailsViewModel.enterDetailsState.observe(this,
+        enterDetailsViewModel.enterDetailsState.observe(viewLifecycleOwner,
             Observer<EnterDetailsViewState> { state ->
                 when (state) {
                     is EnterDetailsSuccess -> {
