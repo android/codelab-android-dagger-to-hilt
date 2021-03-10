@@ -38,7 +38,11 @@ class TermsAndConditionsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_terms_and_conditions, container, false)
+        val view = inflater.inflate(
+            R.layout.fragment_terms_and_conditions,
+            container,
+            false
+        )
 
         view.findViewById<Button>(R.id.next).setOnClickListener {
             registrationViewModel.acceptTCs()
