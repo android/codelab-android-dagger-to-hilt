@@ -55,5 +55,4 @@ class UserDataRepository @Inject constructor() {
     private fun randomInt(): Int {
         return Random.nextInt(until = 100)
     }
-
 }

@@ -21,15 +21,12 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
-import com.example.android.dagger.di.StorageModule
 import com.example.android.dagger.main.MainActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import dagger.hilt.android.testing.UninstallModules
 import org.junit.Rule
 import org.junit.Test
 
-@UninstallModules(StorageModule::class)
 @HiltAndroidTest
 class ApplicationTest {
 

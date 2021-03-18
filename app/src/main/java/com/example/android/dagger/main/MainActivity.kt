@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             setContentView(R.layout.activity_main)
-
             setupViews()
         }
     }
