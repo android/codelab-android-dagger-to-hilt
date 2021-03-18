@@ -19,9 +19,9 @@ package com.example.android.dagger.di
 import com.example.android.dagger.user.UserComponent
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 // This module tells a Component which are its subcomponents
 @Module(
     subcomponents = [

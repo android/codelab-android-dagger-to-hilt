@@ -1,11 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
-
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
@@ -47,20 +43,22 @@ dependencies {
     def dagger_version = "2.27"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation "androidx.core:core-ktx:1.2.0"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.lifecycle:lifecycle-livedata:2.2.0'
-    implementation "androidx.fragment:fragment-ktx:1.2.4"
+    implementation "androidx.appcompat:appcompat:1.2.0"
+    implementation "androidx.core:core-ktx:1.3.2"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
+    implementation "androidx.fragment:fragment-ktx:1.3.0"
 
-    testImplementation 'junit:junit:4.12'
+
+    testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:3.3.1'
     testImplementation 'android.arch.core:core-testing:1.1.1'
 
-    def androidx_test_version = "1.2.0"
+    def androidx_test_version = "1.3.0"
     androidTestImplementation "androidx.test:runner:$androidx_test_version"
     androidTestImplementation "androidx.test:core-ktx:$androidx_test_version"
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
 
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
 
@@ -68,13 +66,8 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
-    // Hilt ViewModel extension
-    def hilt_jetpack_version = "1.0.0-alpha01"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
-
-    // Hilt testing dependencies
+    // Hilt testing
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
-    kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+
 }
