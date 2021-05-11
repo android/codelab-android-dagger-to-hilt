@@ -2,7 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '1.4.21'
-    ext.hilt_version = '2.33-beta'
+    ext.hilt_version = '2.35'
     repositories {
         google()
         jcenter()
