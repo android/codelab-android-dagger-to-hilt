@@ -29,7 +29,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".main.MainActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,13 +38,13 @@
         </activity>
         <activity
             android:name=".registration.RegistrationActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".login.LoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".settings.SettingsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>
