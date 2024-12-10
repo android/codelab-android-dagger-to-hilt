@@ -1,4 +1,7 @@
-# Migrating from Dagger to Hilt in your Android app
+# (Deprecated) Migrating from Dagger to Hilt in your Android app
+
+> [!CAUTION]
+> This codelab is deprecated and it will be removed soon.
 
 This folder contains the source code for the "Migrating from Dagger to Hilt in your Android app" codelab.
 
